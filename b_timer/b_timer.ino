@@ -6,13 +6,13 @@
 #define LED_45S 9   //led pin for 45 seconds mode
 #define LED_60S 8   //led pin for 60 seconds mode
 #define LED_T 13   //led for timer LED
-#define LED_T_DELAY 150
+#define LED_T_DELAY 120
 #define BUTTON_PIN 2
 #define pressed_long 1000
 #define num_modes 5
 
 int speakerPin = 6;
-int speakerVolume = 1;
+int speakerVolume = 40;
 short int max_mode = num_modes + 1;
 
 Bounce bouncer = Bounce();
@@ -155,7 +155,7 @@ void loop() {
     if (millis()-pressed_moment>=60000UL)
     {
       Serial.println("60 seconds have passed");
-      //actuation();
+      actuation();
       pressed_moment=millis();
     }
   }
