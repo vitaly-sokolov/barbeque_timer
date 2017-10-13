@@ -6,7 +6,7 @@ First assembled on Arduino UNO but then remade for Nano.
 <li>Arduino Nano</li>
 <li>1 green LED</li>
 <li>4 white LEDs</li>
-<li>5 x 220 Ohm resistors</li>
+<li>6 x 220 Ohm resistors</li>
 <li>Button</li>
 <li>10kOhm resistor</li>
 <li>Buzzer</li>
