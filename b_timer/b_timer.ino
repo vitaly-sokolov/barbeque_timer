@@ -11,15 +11,15 @@
 #define pressed_long 1000
 #define num_modes 5
 
-int speakerPin = 6;
-int speakerVolume = 40;
-short int max_mode = num_modes + 1;
+int speakerPin=6;
+int speakerVolume=40;
+short int max_mode=num_modes+1;
 
 Bounce bouncer = Bounce();
 
 unsigned long pressed_moment;
 unsigned long timer;
-int current_mode = 0;
+int current_mode=0;
 
 void setup() {
   pinMode(LED_15S,OUTPUT);
@@ -45,6 +45,58 @@ void actuation() {
   analogWrite(speakerPin,0);
 }
 
+void led_on(int led_n) {
+  if (led_n==1)
+    {
+      digitalWrite(LED_15S,HIGH);
+      digitalWrite(LED_20S,LOW);
+      digitalWrite(LED_30S,LOW);
+      digitalWrite(LED_45S,LOW);
+      digitalWrite(LED_60S,LOW);
+    }
+  if (led_n==2)
+   {
+      digitalWrite(LED_15S,LOW);
+      digitalWrite(LED_20S,HIGH);
+      digitalWrite(LED_30S,LOW);
+      digitalWrite(LED_45S,LOW);
+      digitalWrite(LED_60S,LOW);
+   }
+  if (led_n==3)
+  {
+      digitalWrite(LED_15S,LOW);
+      digitalWrite(LED_20S,LOW);
+      digitalWrite(LED_30S,HIGH);
+      digitalWrite(LED_45S,LOW);
+      digitalWrite(LED_60S,LOW);
+  }
+  if (led_n==4)
+  {
+      digitalWrite(LED_15S,LOW);
+      digitalWrite(LED_20S,LOW);
+      digitalWrite(LED_30S,LOW);
+      digitalWrite(LED_45S,HIGH);
+      digitalWrite(LED_60S,LOW);
+  }
+  if (led_n==5)
+  {
+      digitalWrite(LED_15S,LOW);
+      digitalWrite(LED_20S,LOW);
+      digitalWrite(LED_30S,LOW);
+      digitalWrite(LED_45S,LOW);
+      digitalWrite(LED_60S,HIGH);
+  }
+  if (led_n==0)
+  //else
+  {
+      digitalWrite(LED_15S,LOW);
+      digitalWrite(LED_20S,LOW);
+      digitalWrite(LED_30S,LOW);
+      digitalWrite(LED_45S,LOW);
+      digitalWrite(LED_60S,LOW);
+  }
+    
+}
 
 void loop() {
   if (bouncer.update())
@@ -63,21 +115,16 @@ void loop() {
       }
       else
       {
-        current_mode = 0;
-        pressed_moment = 0;
+        current_mode=0;
+        pressed_moment=0;
       }
     }
   }
+  led_on(current_mode);
   //Serial.println(current_mode);
   if (current_mode==1)
   {
     //Serial.println(current_mode);
-    digitalWrite(LED_15S,HIGH);
-    digitalWrite(LED_20S,LOW);
-    digitalWrite(LED_30S,LOW);
-    digitalWrite(LED_45S,LOW);
-    digitalWrite(LED_60S,LOW);
-    
     // The following 'while' was used for debugging
     /*while((millis()-pressed_moment)<=15000UL)
     {
@@ -102,11 +149,6 @@ void loop() {
 
   if (current_mode==2)
   {
-    digitalWrite(LED_15S,LOW);
-    digitalWrite(LED_20S,HIGH);
-    digitalWrite(LED_30S,LOW);
-    digitalWrite(LED_45S,LOW);
-    digitalWrite(LED_60S,LOW);
     if (millis()-pressed_moment>=20000UL)
     {
       Serial.println("20 seconds have passed");
@@ -117,11 +159,6 @@ void loop() {
 
   if (current_mode==3)
   {
-    digitalWrite(LED_15S,LOW);
-    digitalWrite(LED_20S,LOW);
-    digitalWrite(LED_30S,HIGH);
-    digitalWrite(LED_45S,LOW);
-    digitalWrite(LED_60S,LOW);
     if (millis()-pressed_moment>=30000UL)
     {
       Serial.println("30 seconds have passed");
@@ -132,11 +169,6 @@ void loop() {
 
   if (current_mode==4)
   {
-    digitalWrite(LED_15S,LOW);
-    digitalWrite(LED_20S,LOW);
-    digitalWrite(LED_30S,LOW);
-    digitalWrite(LED_45S,HIGH);
-    digitalWrite(LED_60S,LOW);
     if (millis()-pressed_moment>=45000UL)
     {
       Serial.println("45 seconds have passed");
@@ -147,11 +179,6 @@ void loop() {
 
   if (current_mode==5)
   {
-    digitalWrite(LED_15S,LOW);
-    digitalWrite(LED_20S,LOW);
-    digitalWrite(LED_30S,LOW);
-    digitalWrite(LED_45S,LOW);
-    digitalWrite(LED_60S,HIGH);
     if (millis()-pressed_moment>=60000UL)
     {
       Serial.println("60 seconds have passed");
@@ -160,14 +187,6 @@ void loop() {
     }
   }
 
-  if (current_mode==0)
-  {
-    digitalWrite(LED_15S,LOW);
-    digitalWrite(LED_20S,LOW);
-    digitalWrite(LED_30S,LOW);
-    digitalWrite(LED_45S,LOW);
-    digitalWrite(LED_60S,LOW);
-  }
 }
 
 
