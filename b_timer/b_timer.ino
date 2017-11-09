@@ -12,7 +12,7 @@
 #define num_modes 5
 #define LED_BRIGHTNESS 5
 
-int speakerPin=4;
+int speakerPin=11;
 int speakerVolume=40;
 short int max_mode=num_modes+1;
 
