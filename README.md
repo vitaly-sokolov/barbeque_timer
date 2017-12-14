@@ -12,9 +12,11 @@ First assembled on Arduino UNO but then remade for Nano.
 <li>Buzzer</li>
 <li>Wires</li>
 <li>Breadboard</li>
+<li>Switch</li>
+<li>9V battery</li>
 
 <h2>Breadboard connection</h2>
-<img src="breadboard.png">
+<img src="barbeque_timer_nano_bb.png">
 
 <h2>Schematic</h2>
-<img src="schematic.jpg">
+<img src="barbeque_timer_nano_schem.png">
